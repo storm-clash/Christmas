@@ -1,0 +1,111 @@
+:root {
+
+    --bd-black: hsl(0, 0%, 0%);
+
+}
+
+*,
+*::after,
+*::before {
+
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+
+    max-width: 1200px;
+    min-height: 100svh;
+    margin-inline: auto;
+    background-color: white;
+    position: relative;
+}
+
+.present__Wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    top:50%;
+    right: 20%;
+    position: absolute;
+    transform: rotate(10deg);
+    border-radius: .5rem;
+}
+.present__Wrapper::before {
+    content: '';
+    position: absolute;
+    top:0;
+    right: 40px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    border-radius: 10px; /* Match corners */
+    padding: 5px;
+    width: 300px;
+}
+
+.present__Wrapper::after {
+    content: '';
+    position: absolute;
+    bottom:0;
+    top: 40px;
+    right: 0;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    border-radius: 10px; /* Match corners */
+    padding: 5px;
+    width: 10px;
+}
+
+.present__Image {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    animation: shake 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    100%{
+        transform: rotate(-10deg);
+    }
+}
+
+.close {
+    position: absolute;
+    top:0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: .5rem;
+}
+
+.close:hover {
+    cursor: pointer;
+}
+
+.message{
+    top:50%;
+    right: 20%;
+    position: absolute;
+    width: 0;
+    width: 0; /* Initial width (hidden) */
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px) scale(0); /* Start slightly down and scaled down */
+    transition: transform 1s ease, opacity 1s ease, width 1s ease; /* Smooth animation */
+}
+
+.message.active {
+    width: 200px; /* Target width */
+    opacity: 1; /* Fully visible */
+    transform: translateY(-500px) scale(1); /* Move up and scale to full size */
+}
